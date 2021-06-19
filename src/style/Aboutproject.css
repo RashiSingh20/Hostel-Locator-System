@@ -1,0 +1,26 @@
+.aboutus {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+  .card_container {
+    display: flex;
+    flex-direction: row;
+    
+  }
+  
+  .aboutus > h1 {
+    text-decoration: underline;
+    font-size: 30px;
+  }
+  @media only screen and (max-width: 1000px) {
+    .card_container {
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .aboutus > h1 {
+      font-size: 24px;
+    }
+  }
