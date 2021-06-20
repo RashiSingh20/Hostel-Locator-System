@@ -1,3 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+
+#instruction {
+  font-family: "Baloo 2", cursive;
+}
+
+.instruction_list {
+  margin-top: 10px;
+}
+
+.instruction_top {
+  margin-bottom: 10px;
+}
+
 /* Elements */
 li {
   padding: 10px 0;

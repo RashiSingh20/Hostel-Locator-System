@@ -40,17 +40,18 @@ function SignIn(){
     };
 
     postUserData(userObject, idTokenResult.token)
-    .then((res) => {
+    .then((res) => {  
       dispatch({
         type: 'SET_USER',
         user: {
-        name: res.data.name,
-        email: res.data.email,
-        phoneNo: res.data.phoneNo,
-        token: idTokenResult.token,
-        role: res.data.role
-      }
-    });
+          name: res.data.name,
+          email: res.data.email,
+          phoneNo: res.data.phoneNo,
+          token: idTokenResult.token,
+          role: res.data.role
+        }
+      });
+
     })
     .catch((err) => console.log(err));
 

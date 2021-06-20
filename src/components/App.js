@@ -2,13 +2,14 @@ import React, {useEffect} from 'react';
 import NewHeader from './NewHeader';
 import Home from './Home';
 import Footer from './Footer';
-import About from './About';
+// import About from './About';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Search from './Search';
 import Detail from './Detail';
 import Form from './Form';
 import OwnerHostels from './OwnerHostels';
+import PrivateRoute from './PrivateRoute';
 import {auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import {currentUser} from '../functions/user';
@@ -21,21 +22,24 @@ function App() {
 
 useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
-      console.log('CALL');
       if (authUser) {
         const idTokenResult = await authUser.getIdTokenResult();
 
         currentUser(idTokenResult.token)
         .then((res) => {
+          const user = {
+            name: res.data.name,
+            email: res.data.email,
+            phoneNo: res.data.phoneNo,
+            token: idTokenResult.token,
+            role: res.data.role
+          };
+
+          window.localStorage.setItem('user', JSON.stringify(user));
+
           dispatch({
             type: 'SET_USER',
-            user: {
-              name: res.data.name,
-              email: res.data.email,
-              phoneNo: res.data.phoneNo,
-              token: idTokenResult.token,
-              role: res.data.role
-            }
+            user
           });
         })
         .catch(err => console.log(err))
@@ -64,7 +68,7 @@ useEffect(() => {
 
     <Route exact path='/Search' component={Search}/>
    
-    <Route exact path='/Detail' component={Detail}/>
+    <PrivateRoute exact path='/Detail' component={Detail}/>
     <Route exact path='/Form' component={Form}/>
     <Route exact path='/SignIn' component={SignIn}/>
     <Route exact path='/SignUp' component={SignUp}/>

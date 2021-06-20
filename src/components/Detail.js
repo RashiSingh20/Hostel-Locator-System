@@ -5,6 +5,8 @@ import './App.css';
 import { useStateValue } from './StateProvider';
 import { useHistory } from 'react-router';
 import '../style/Detail.css'
+import isEmpty from 'validator/lib/isEmpty';
+
 
 // const st={
 //   textDecoration:'none',
@@ -13,10 +15,6 @@ import '../style/Detail.css'
 const but={
   fontSize:'28px',
   color:'white',
-}
-const align={
-  position: 'absolute', left: '50%', top: '50%',
-        transform: 'translate(-50%, -50%)'
 }
 
 const divStyle = {
@@ -37,10 +35,10 @@ function Detail(){
     const submitted = (e) => {
       e.preventDefault()
 
-      if (name === '' || place === '' || city === '') {
-        alert("All fields are required!");
-        return;
-      }
+     if (isEmpty(name.current.value) || isEmpty(place.current.value) || isEmpty(city.current.value)) {
+      alert('All fields are required.')
+    }
+    else{
 
 
       dispatch({
@@ -59,6 +57,7 @@ function Detail(){
       })
 
       history.push('/Form');
+    }
     ;}
 
     return(

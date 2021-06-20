@@ -30,14 +30,15 @@ useEffect(() => {
 					<div class="front pic">
 						<div class="inner">
 							<p>{details.name}</p>
-              <span>{details.state}</span> <br></br>
+              <span>📍{details.state} Maharashtra</span> <br></br>
 			  {/* <span>{details.email}</span> */}
-			  <span>{details.price}</span>
+			  <span>Cost: {details.price}</span>
 						</div>
 					</div>
 					<div class="back">
 						<div class="inner">
-						  <p>{details.description}</p>
+							<p>📞Contact Me:</p>
+						  <p>{details.phoneNumber}</p>
 						  <Button href={details.hostelLink} target="_blank"  variant="contained"> <b>Visit Hostel Link </b></Button>
 						</div>
 					</div>

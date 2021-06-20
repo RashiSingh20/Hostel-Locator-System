@@ -10,11 +10,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Divider from '@material-ui/core/Divider';
-import MenuIcon from '@material-ui/icons/Menu';
+// import Drawer from '@material-ui/core/Drawer';
+// import List from '@material-ui/core/List';
+// import ListItem from '@material-ui/core/ListItem';
+// import Divider from '@material-ui/core/Divider';
+// import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {auth} from './firebase';
@@ -82,17 +82,19 @@ function Header() {
 
                         <Button><Link href="/Detail" color="inherit">My Hostel</Link> </Button>
 
-                        <Button color="inherit" onClick={() => auth.signOut()}>Sign out</Button>
+                        <Button color="inherit" onClick={() => {
+                  auth.signOut();
+                  localStorage.clear();
+                }}>Sign out</Button>
                     </MenuItem>
                 ) : (
                     <MenuItem className="menuItems">
                         <Button><Link href="/" color="inherit">Home   </Link></Button>
  
-                        <Button><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
+                        <Button><Link href="/Search" color="inherit">Search Hostels </Link></Button> 
+                        <Button color="inherit"><Link href="/SignIn" color="inherit">Sign In </Link></Button> 
+                        <Button color="inherit"><Link href="/SignUp" color="inherit">Sign Up </Link></Button> 
 
-                        <Button color="inherit" onClick={() => history.push('/SignIn')}>Sign in</Button>
-
-                        <Button color="inherit" onClick={() => history.push('/SignUp')}>Sign up</Button> 
                     </MenuItem>
                 )
             }
@@ -103,13 +105,24 @@ function Header() {
     padding: "10px",
     fontFamily: "Arial"
   };
+    const size = {  
+   fontSize:'23px',
+   color:'#4d0000'
+  };
+      const size1 = {  
+   fontSize:'16px',
+  };
+       const icon = {  
+   fontSize:'31px',
+  };
+
 
     return (
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar style={mystyle} >
-                    <Typography variant="h6" noWrap>
-                        Hostel Locator System
+                    <Typography style={size} variant="h6" noWrap>
+                     <strong>   Hostel Locator System </strong>
                     </Typography>
 
                     <div className={classes.grow} />
@@ -117,7 +130,7 @@ function Header() {
                         {
                             user && user.token ? (
                                 <>
-                                    <Button><Link href="/" color="inherit">Home   </Link></Button>
+                                    <Button><Link href="/" color="inherit">Home  </Link></Button>
  
                                     <Button><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
 
@@ -142,10 +155,13 @@ function Header() {
                                             onClose={() => setAnchorEl(null)}
                                         >
                                             { user && user.token ?
-                                                <MenuItem onClick={() => auth.signOut()}>Sign Out</MenuItem> :
+                                                <MenuItem onClick={() => {
+                                                    auth.signOut();
+                                                    localStorage.clear();
+                                                  }}>Sign Out</MenuItem> :
                                             (<>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a href="/SignIn">Sign In</a></MenuItem>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a href="/SignUp">Sign Up</a></MenuItem>
+                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
+                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
                                             </>)
                                             }
                                         </Menu>
@@ -153,19 +169,20 @@ function Header() {
                                 </>
                             ) : (
                                 <>
-                                    <Button><Link href="/" color="inherit">Home</Link></Button>
+                                    <Button style={size1}><Link href="/" color="inherit">Home</Link></Button>
  
-                                    <Button><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
+                                    <Button style={size1}><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
 
                                     <div>
                                         <IconButton
+                                        style={size1}
                                             aria-label="account of current user"
                                             aria-controls="menu-appbar"
                                             aria-haspopup="true"
                                             onClick={(event) => setAnchorEl(event.currentTarget)}
                                             color="inherit"
                                         >
-                                            <AccountCircle />
+                                            <AccountCircle style={icon}/>
                                         </IconButton>
 
                                         <Menu
@@ -176,10 +193,13 @@ function Header() {
                                             onClose={() => setAnchorEl(null)}
                                         >
                                             { user && user.token ?
-                                                <MenuItem onClick={() => auth.signOut()}>Sign Out</MenuItem> :
+                                                <MenuItem onClick={() => {
+                                                    auth.signOut();
+                                                    localStorage.clear();
+                                                  }}>Sign Out</MenuItem> :
                                             (<>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a href="/SignIn">Sign In</a></MenuItem>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a href="/SignUp">Sign Up</a></MenuItem>
+                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
+                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
                                             </>)
                                             }
                                         </Menu>

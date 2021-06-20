@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import Slide from '@material-ui/core/Slide';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,22 +80,24 @@ function Home() {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogContent>
-          <div id="instruction">
+          <div id="instruction">           
             <h1 style={divStyle}>Instructions</h1>
-            <h2>For those who own hostel</h2>
-
-            <ol>
-              <li>Create your account- Log In</li>
-              <li>Visit "My Hostel" and fill up your hostel details</li>
-              <li>Verify the Google map link once you have entered the Hostel Name, State, City</li>
-              <li>You will be redirected to Google maps, Confirm your hostel and proceed with further information</li>
-              <li> If its not your hostel link, replace it with hostel link in the field and you are set!</li>
-              
-            </ol>
-            
               <h2>For those who do not own hostel</h2>
-              <p>Visit "Search Hostels"!</p>
-            
+              <p className="instruction_top">Visit "Search Hostels"!</p>
+
+               <Divider />
+
+              <h2 className="instruction_list">For those who own hostel</h2>
+              <ol>
+                <li>Create your account- Log In</li>
+                <li>Visit "My Hostel" and fill up your hostel details</li>
+                <li>Verify the Google map link once you have entered the Hostel Name, State, City</li>
+                <li>You will be redirected to Google maps, Confirm your hostel and proceed with further information</li>
+                <li> If its not your hostel link, replace it with hostel link in the field and you are set! For Example ⬇</li>   
+              <div style={{width:"600px", height: "fit-content"}}>
+                <img src="link.png" style={{ maxWidth: "100%", height: "auto" }}/>
+                </div> 
+              </ol>   
           </div>
         </DialogContent>
 

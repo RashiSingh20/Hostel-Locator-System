@@ -76,11 +76,6 @@ function SignUp() {
   const submitted = (e) => {
     e.preventDefault();
 
-    // if (name.current.value === null || email.current.value === null || password.current.value === null || phoneNo.current.value === null) {
-    //     alert("All fields are required!");
-    //     return;
-    // }
-
     if (isEmpty(email.current.value) || isEmpty(password.current.value) || isEmpty(phoneNo.current.value)) {
       alert('All fields are required.')
     } else if (!isEmail(email.current.value)) {
