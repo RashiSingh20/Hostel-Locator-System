@@ -1,14 +1,13 @@
-import React, {useRef, useEffect, useState, Component} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 import './signIn.css';
 import {auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import { useHistory } from 'react-router';
-// import {postUserData} from '../functions/user';
 import isEmpty from 'validator/lib/isEmpty';
 import isEmail from 'validator/lib/isEmail';
-// import equals from 'validator/lib/equals';
 
 function SignUp() {
+  //referencing to the fields so that it can be accessed with field.current.name/value etc
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -16,7 +15,7 @@ function SignUp() {
   const history = useHistory();
   const [{user}, dispatch] = useStateValue();
   const [role, setRole] = useState('');
-
+// handling the role change during registration (visitor, admin, hostel owner)
   const handleRoleChange = (event) => {
     setRole(event.target.value);
   };
@@ -76,11 +75,17 @@ function SignUp() {
   const submitted = (e) => {
     e.preventDefault();
 
+    dispatch({
+      type: 'CLEAR_MESSAGES'
+    });
+
+    //form validator
     if (isEmpty(email.current.value) || isEmpty(password.current.value) || isEmpty(phoneNo.current.value)) {
-      alert('All fields are required.')
+      alert('All fields are required.');
     } else if (!isEmail(email.current.value)) {
-      alert('Invalid email.')}
-     else {
+      alert('Invalid email.');
+    } else {
+       //firebase user sign in authentication
       auth.createUserWithEmailAndPassword(email.current.value, password.current.value)
           .then((authUser) => {
             authUser.user.updateProfile({
@@ -95,9 +100,23 @@ function SignUp() {
               }
             });
 
+            dispatch({
+              type: 'DISPLAY_MESSAGE',
+              message: {
+                successMessage: "User registered successfully! Please sign in now."
+              }});
+
             history.push('/SignIn');
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+
+            dispatch({
+              type: 'DISPLAY_MESSAGE',
+              message:{
+                errorMessage: err.message
+              }});
+          });
     }
         
 };
@@ -127,6 +146,7 @@ function SignUp() {
           </div>
         
     <div class="gender-details"/>
+    {/* setting the role to selected role by the user */}
           <input type="radio" name="role" value="hostelOwner" onClick={handleRoleChange} on id="dot-1"/>
           <input type="radio" name="role" value="visitor" onClick={handleRoleChange} id="dot-2"/>
           <input type="radio" name="role" value="admin" onClick={handleRoleChange} id="dot-3"/>

@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-// import Inputs from './TextField';
 import Button from '@material-ui/core/Button';
 import './App.css';
 import { useStateValue } from './StateProvider';
@@ -7,11 +6,6 @@ import { useHistory } from 'react-router';
 import '../style/Detail.css'
 import isEmpty from 'validator/lib/isEmpty';
 
-
-// const st={
-//   textDecoration:'none',
-//   borderColor:'black',
-// }
 const but={
   fontSize:'28px',
   color:'white',
@@ -38,27 +32,25 @@ function Detail(){
      if (isEmpty(name.current.value) || isEmpty(place.current.value) || isEmpty(city.current.value)) {
       alert('All fields are required.')
     }
-    else{
-
-
+    else {
       dispatch({
             type: 'SET_NAME',
             name: name.current.value
-      })
+      });
   
       dispatch({
         type: 'SET_PLACE',
         place: place.current.value
-      })
+      });
 
       dispatch({
         type: 'SET_CITY',
         city: city.current.value
-      })
+      });
 
       history.push('/Form');
     }
-    ;}
+    };
 
     return(
       <div class="bodyy">
@@ -97,7 +89,7 @@ function Detail(){
   <div class="vertical-center">
   <Button style={but} type="submit"  onClick={submitted}> Submit
           {/* <a href="/Form"> submit </a> */}
-          </Button>
+  </Button>
 
   </div>
 </div>

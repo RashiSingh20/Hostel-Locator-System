@@ -2,18 +2,13 @@ export const initialState = {
     name: '',
     place: '',
     city: '',
-    display: [
-    //     {
-    //      hostelname :'',
-    //      state: '',
-    //      price : '',
-    //  hostelink: '',
-    //  email: '',
-    //  desc: '',
-    // }
-],
-user: null, 
-info: null
+    display: [],
+    user: null,
+    info: null,
+    message : {
+        successMessage: '',
+        errorMessage: ''
+    }
 };
 
 const reducer = (state, action) => {
@@ -36,19 +31,30 @@ const reducer = (state, action) => {
         case "SET_DISPLAY":
             return {
                 ...state,
-                display: [...state.display, ...action.display]
+                display: action.display
             };
         case "SET_USER":
-                return {
-                    ...state,
-                    user: action.user
-                };
+            return {
+                ...state,
+                user: action.user
+            };
         case "INFO":
-                return {
-                    ...state,
-                    info: action.info
-                };
-
+            return {
+                ...state,
+                info: action.info
+            };
+        case "DISPLAY_MESSAGE":
+            return {
+                ...state,
+                message: action.message
+            };
+        case 'CLEAR_MESSAGES':
+            return {
+                message: {
+                    successMessage: '',
+                    errorMessage: ''
+                }
+            };
         default:
             return state;
     }

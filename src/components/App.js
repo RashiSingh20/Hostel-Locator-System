@@ -2,23 +2,21 @@ import React, {useEffect} from 'react';
 import NewHeader from './NewHeader';
 import Home from './Home';
 import Footer from './Footer';
-// import About from './About';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Search from './Search';
 import Detail from './Detail';
 import Form from './Form';
-import OwnerHostels from './OwnerHostels';
 import PrivateRoute from './PrivateRoute';
 import {auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import {currentUser} from '../functions/user';
+import Message from './Message';
 import './App.css';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{message}, dispatch] = useStateValue();
 
 useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
@@ -34,7 +32,7 @@ useEffect(() => {
             token: idTokenResult.token,
             role: res.data.role
           };
-
+//saving user details in local storage to access it for private route.
           window.localStorage.setItem('user', JSON.stringify(user));
 
           dispatch({
@@ -59,9 +57,10 @@ useEffect(() => {
 
   return (
 
-       <Router>
+       <Router>   
     <div className="App">
     <NewHeader/>
+    <Message />
     
     <Switch>
     {/* <Route exact path='/About' component={About}/> */}
@@ -72,7 +71,7 @@ useEffect(() => {
     <Route exact path='/Form' component={Form}/>
     <Route exact path='/SignIn' component={SignIn}/>
     <Route exact path='/SignUp' component={SignUp}/>
-    <Route exact path='/OwnerHostels' component={OwnerHostels}/>
+    {/* <Route exact path='/OwnerHostels' component={OwnerHostels}/> */}
 
     <Route exact path='/' component={Home}/>
 

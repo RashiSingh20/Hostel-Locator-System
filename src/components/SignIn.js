@@ -11,7 +11,7 @@ function SignIn(){
 
   const history = useHistory();
   const [{user, info}, dispatch] = useStateValue();
-
+//will push to home page if user is already signed in
   useEffect(() => {
     if(user && user.token) {
       history.push('/');
@@ -29,6 +29,10 @@ function SignIn(){
   const signIn = async (e) => {
     e.preventDefault();
 
+    dispatch({
+      type: 'CLEAR_MESSAGES'
+    });
+
     try {
       const authUser = await auth.signInWithEmailAndPassword(email.current.value, password.current.value)
       const {user} = authUser;
@@ -40,7 +44,7 @@ function SignIn(){
     };
 
     postUserData(userObject, idTokenResult.token)
-    .then((res) => {  
+    .then((res) => {
       dispatch({
         type: 'SET_USER',
         user: {
@@ -51,12 +55,16 @@ function SignIn(){
           role: res.data.role
         }
       });
-
     })
     .catch((err) => console.log(err));
-
     } catch(error) {
       console.log(error);
+
+      dispatch({
+        type: 'DISPLAY_MESSAGE',
+        message:{
+          errorMessage: error.message
+        }});
     }
 };
 
