@@ -46,10 +46,9 @@ function Form() {
         .then(() =>
           postGetData()
             .then((res) => {
-<<<<<<< HEAD
+
               //dispatching in reducer
-=======
->>>>>>> 346f0dec8fe00e360864861cdd99bb181333ff9f
+
               dispatch({
                 type: 'SET_DISPLAY',
                 display: res.data.form
