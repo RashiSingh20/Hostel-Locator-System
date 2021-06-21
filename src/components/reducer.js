@@ -4,11 +4,15 @@ export const initialState = {
     city: '',
     display: [],
     user: null,
+<<<<<<< HEAD
     info: null,
     message : {
         successMessage: '',
         errorMessage: ''
     }
+=======
+    info: null
+>>>>>>> 346f0dec8fe00e360864861cdd99bb181333ff9f
 };
 
 const reducer = (state, action) => {
@@ -43,6 +47,7 @@ const reducer = (state, action) => {
                 ...state,
                 info: action.info
             };
+<<<<<<< HEAD
         case "DISPLAY_MESSAGE":
             return {
                 ...state,
@@ -55,6 +60,9 @@ const reducer = (state, action) => {
                     errorMessage: ''
                 }
             };
+=======
+
+>>>>>>> 346f0dec8fe00e360864861cdd99bb181333ff9f
         default:
             return state;
     }
