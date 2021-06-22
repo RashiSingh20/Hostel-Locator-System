@@ -92,7 +92,7 @@ function SignIn(){
               </div>
               <div className="input-box">
                 <span className="details">Password</span>
-                <input ref={password} type="text" placeholder="Enter your password" required/>
+                <input ref={password} type="password" placeholder="Enter your password" required/>
               </div>
             </div>
             <div className="button">

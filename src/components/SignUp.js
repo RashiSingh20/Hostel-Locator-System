@@ -142,7 +142,7 @@ function SignUp() {
           </div>
           <div className="input-box">
             <span className="details">Password</span>
-            <input ref={password} name="password" type="text" placeholder="Enter your password" required/>
+            <input ref={password} name="password" type="password" placeholder="Enter your password" required/>
           </div>
         
     <div class="gender-details"/>
