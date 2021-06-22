@@ -14,7 +14,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 return (user && user.token && (user.role === 'hostelOwner')) ? (
                     <Component {...props} />  /* The 'props' here are our custom Components's props. */
                 ) : (
-                    <Redirect to='/SignIn' />
+                    <Redirect to='/' />
                 )
             }}
         />
