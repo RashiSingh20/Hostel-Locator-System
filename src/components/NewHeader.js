@@ -100,13 +100,11 @@ function Header() {
     padding: "10px",
     fontFamily: "Arial"
   };
-    const size = {  
-   fontSize:'23px',
-   color:'#4d0000'
-  };
+
       const size1 = {  
    fontSize:'16px',
   };
+  
        const icon = {  
    fontSize:'31px',
   };
@@ -116,8 +114,8 @@ function Header() {
         <div className={classes.grow}>
             <AppBar position="static">
                 <Toolbar style={mystyle} >
-                    <Typography style={size} variant="h6" noWrap>
-                     <strong>   Hostel Locator System </strong>
+                    <Typography variant="h6" noWrap>
+                     <strong>   Hostel Locator System</strong>
                     </Typography>
 
                     <div className={classes.grow} />
@@ -125,7 +123,7 @@ function Header() {
                         {
                             user && user.token ? (
                                 <>
-                                    <Button><Link href="/" color="inherit">Home  </Link></Button>
+                                    <Button><Link href="/" color="inherit">Home </Link></Button>
  
                                     <Button><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
 
@@ -164,9 +162,9 @@ function Header() {
                                 </>
                             ) : (
                                 <>
-                                    <Button style={size1}><Link href="/" color="inherit">Home</Link></Button>
+                                    <Button style={size1}><Link href="/" color="inherit"><b>Home</b></Link></Button>
  
-                                    <Button style={size1}><Link href="/Search" color="inherit">Search Hostels </Link> </Button> 
+                                    <Button style={size1}><Link href="/Search" color="inherit"><b>Search Hostels</b></Link> </Button> 
 
                                     <div>
                                         <IconButton
