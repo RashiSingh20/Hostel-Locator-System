@@ -8,8 +8,7 @@ export const initialState = {
     message : {
         successMessage: '',
         errorMessage: ''
-    },
-    info: null
+    }
 };
 
 const reducer = (state, action) => {
@@ -57,7 +56,6 @@ const reducer = (state, action) => {
                     errorMessage: ''
                 }
             };
-
         default:
             return state;
     }

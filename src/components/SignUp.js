@@ -149,7 +149,7 @@ function SignUp() {
     {/* setting the role to selected role by the user */}
           <input type="radio" name="role" value="hostelOwner" onClick={handleRoleChange} on id="dot-1"/>
           <input type="radio" name="role" value="visitor" onClick={handleRoleChange} id="dot-2"/>
-          <input type="radio" name="role" value="admin" onClick={handleRoleChange} id="dot-3"/>
+          {/* <input type="radio" name="role" value="admin" onClick={handleRoleChange} id="dot-3"/> */}
           {/* <span class="gender-title">Gender</span> */}
 
           <div class="category">
@@ -163,10 +163,10 @@ function SignUp() {
               <span class="gender">Visitor</span>
             </label>
 
-            <label htmlFor="dot-3">
+            {/* <label htmlFor="dot-3">
               <span class="dot three"></span>
               <span class="gender">Admin</span>
-            </label>
+            </label> */}
           </div>
     </div>
         <div className="button">

@@ -38,10 +38,20 @@ function SignIn(){
       const {user} = authUser;
       const idTokenResult = await user.getIdTokenResult();
 
-    const userObject = {
-      phoneNo: info.phoneNo,
-      role: info.role
-    };
+    const userObject = {};
+
+    // const userObject = {
+    //   phoneNo: info.phoneNo,
+    //   role: info.role
+    // };
+
+    if(info && info.phoneNo) {
+      userObject.phoneNo = info.phoneNo
+    }
+
+    if(info && info.role) {
+      userObject.role = info.role
+    }
 
     postUserData(userObject, idTokenResult.token)
     .then((res) => {
