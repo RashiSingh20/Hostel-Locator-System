@@ -5,8 +5,10 @@ import Footer from './Footer';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import Search from './Search';
+import UserProfile from './User';
 import Detail from './Detail';
 import Form from './Form';
+import Bookmark from './Bookmark';
 import PrivateRoute from './PrivateRoute';
 import {auth} from './firebase';
 import { useStateValue } from './StateProvider';
@@ -32,7 +34,8 @@ useEffect(() => {
             token: idTokenResult.token,
             role: res.data.role
           };
-//saving user details in local storage to access it for private route.
+          
+          //saving user details in local storage to access it for private route.
           window.localStorage.setItem('user', JSON.stringify(user));
 
           dispatch({
@@ -57,28 +60,26 @@ useEffect(() => {
 
   return (
 
-       <Router>   
-    <div className="App">
-    <NewHeader/>
-    <Message />
-    
-    <Switch>
-    {/* <Route exact path='/About' component={About}/> */}
+    <Router>   
+      <div className="App">
+            <NewHeader/>
+            <Message />
+            
+            <Switch>
 
-    <Route exact path='/Search' component={Search}/>
-   
-    <PrivateRoute exact path='/Detail' component={Detail}/>
-    <Route exact path='/Form' component={Form}/>
-    <Route exact path='/SignIn' component={SignIn}/>
-    <Route exact path='/SignUp' component={SignUp}/>
-    {/* <Route exact path='/OwnerHostels' component={OwnerHostels}/> */}
+            <Route exact path='/SignIn' component={SignIn}/>
+            <Route exact path='/SignUp' component={SignUp}/>
+            <PrivateRoute exact path='/Detail' component={Detail}/>
+            <Route exact path='/Form' component={Form}/>
+            <PrivateRoute exact path='/Bookmark' component={Bookmark}/>
+            <Route exact path='/Search' component={Search}/>
+            <PrivateRoute exact path='/User' component={UserProfile}/>
+            <Route exact path='/' component={Home}/>
 
-    <Route exact path='/' component={Home}/>
-
-    </Switch>
-    
-    <Footer/>
-   </div>
+            </Switch>
+          
+            <Footer/>
+      </div>
     </Router>
   
   );

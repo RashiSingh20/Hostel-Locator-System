@@ -8,7 +8,8 @@ export const initialState = {
     message : {
         successMessage: '',
         errorMessage: ''
-    }
+    },
+    bookmark: []
 };
 
 const reducer = (state, action) => {
@@ -43,7 +44,6 @@ const reducer = (state, action) => {
                 ...state,
                 info: action.info
             };
-
         case "DISPLAY_MESSAGE":
             return {
                 ...state,
@@ -55,6 +55,11 @@ const reducer = (state, action) => {
                     successMessage: '',
                     errorMessage: ''
                 }
+            };
+        case "GET_BOOKMARK":
+            return {
+                ...state,
+                bookmark: action.bookmark
             };
         default:
             return state;

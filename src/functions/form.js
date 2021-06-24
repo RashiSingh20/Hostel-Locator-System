@@ -7,8 +7,3 @@ await axios.post('/formPost', details,
 
 export const postGetData = async () =>
 await axios.get('/formGet');
-
-export const getOwnerData = async (authtoken) =>
-await axios.get('/Owner/formGet',
-{ headers: { authtoken } }
-);

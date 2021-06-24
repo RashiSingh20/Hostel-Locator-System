@@ -77,10 +77,12 @@ function Header() {
 
                         <Button><Link href="/Detail" color="inherit">My Hostel</Link> </Button>
 
+                        <Button><Link href="/User" color="inherit">My Profile</Link> </Button>
+
                         <Button color="inherit" onClick={() => {
-                  auth.signOut();
-                  localStorage.clear();
-                }}>Sign out</Button>
+                            auth.signOut();
+                            localStorage.clear();
+                            }}>Sign out</Button>
                     </MenuItem>
                 ) : (
                     <MenuItem className="menuItems">
@@ -148,14 +150,21 @@ function Header() {
                                             onClose={() => setAnchorEl(null)}
                                         >
                                             { user && user.token ?
+                                                <>
+                                                <MenuItem onClick={() => history.push('/User')}>My Profile</MenuItem>
+
                                                 <MenuItem onClick={() => {
                                                     auth.signOut();
                                                     localStorage.clear();
-                                                  }}>Sign Out</MenuItem> :
-                                            (<>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
-                                            </>)
+                                                  }}>Sign Out</MenuItem> 
+                                                </>
+                                                  :
+                                                (
+                                                <>
+                                                    <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
+                                                    <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
+                                                </>
+                                                )
                                             }
                                         </Menu>
                                     </div>                                
@@ -186,14 +195,21 @@ function Header() {
                                             onClose={() => setAnchorEl(null)}
                                         >
                                             { user && user.token ?
-                                                <MenuItem onClick={() => {
-                                                    auth.signOut();
-                                                    localStorage.clear();
-                                                  }}>Sign Out</MenuItem> :
-                                            (<>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
-                                                <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
-                                            </>)
+                                                <>
+                                                    <MenuItem onClick={() => history.push('/User')}>My Profile</MenuItem>
+
+                                                    <MenuItem onClick={() => {
+                                                        auth.signOut();
+                                                        localStorage.clear();
+                                                    }}>Sign Out</MenuItem>
+                                                </> 
+                                                    :
+                                                (
+                                                <>
+                                                    <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignIn">Sign In</a></MenuItem>
+                                                    <MenuItem onClick={() => setAnchorEl(null)}><a style={{textDecoration: "none", color: "black"}} href="/SignUp">Sign Up</a></MenuItem>
+                                                </>
+                                                )
                                             }
                                         </Menu>
                                     </div> 
