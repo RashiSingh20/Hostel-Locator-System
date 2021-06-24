@@ -10,6 +10,7 @@ import Detail from './Detail';
 import Form from './Form';
 import Bookmark from './Bookmark';
 import PrivateRoute from './PrivateRoute';
+import ProfileRoute from './ProfileRoute';
 import {auth} from './firebase';
 import { useStateValue } from './StateProvider';
 import {currentUser} from '../functions/user';
@@ -71,9 +72,9 @@ useEffect(() => {
             <Route exact path='/SignUp' component={SignUp}/>
             <PrivateRoute exact path='/Detail' component={Detail}/>
             <Route exact path='/Form' component={Form}/>
-            <PrivateRoute exact path='/Bookmark' component={Bookmark}/>
+            <ProfileRoute exact path='/Bookmark' component={Bookmark}/>
             <Route exact path='/Search' component={Search}/>
-            <PrivateRoute exact path='/User' component={UserProfile}/>
+            <ProfileRoute exact path='/User' component={UserProfile}/>
             <Route exact path='/' component={Home}/>
 
             </Switch>
