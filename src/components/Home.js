@@ -53,7 +53,7 @@ function Home() {
           <section class="header-content">
             {
             user && user.name ?
-            <h1><b> Welcome {user.name} 😊🏠 </b></h1> :  <h1><b> Welcome 😊🏠 </b></h1>
+            <h1><b> Welcome {user.name} 🏠 </b></h1> :  <h1><b> Welcome 🏠 </b></h1>
             }
             <p>
               Easing the process of searching a comfortable and affordable hostels and
