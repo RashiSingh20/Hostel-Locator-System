@@ -70,7 +70,7 @@ function Home() {
           </section>    
         </header>
 
-        {/* Instructions */}
+        {/*Instructions*/}
         <Dialog
         open={open}
         TransitionComponent={Transition}
